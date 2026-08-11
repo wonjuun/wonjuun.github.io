@@ -241,6 +241,29 @@
       grid-template-columns: 7rem 1fr;
     }
 
+    .news-rows {
+      overflow-y: auto;
+      overscroll-behavior-y: contain;
+      scrollbar-color: #cbd5e1 transparent;
+      scrollbar-gutter: stable;
+      scrollbar-width: thin;
+    }
+
+    .news-rows::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .news-rows::-webkit-scrollbar-thumb {
+      border-radius: 999px;
+      background: #cbd5e1;
+    }
+
+    .news-rows:focus-visible {
+      outline: 2px solid #93c5fd;
+      outline-offset: 4px;
+      border-radius: 6px;
+    }
+
     .row-label {
       font-family: var(--mono);
       font-size: 0.82rem;
@@ -441,10 +464,10 @@
       <div>
         <section class="section" id="news">
           <h2>Recent News</h2>
-          <div class="rows">
+          <div class="rows news-rows" data-visible-items="5">
             <div class="row">
               <span class="row-label">Aug. 2026</span>
-              <p class="row-body">Started my Ph.D. journey in the <a href="https://murgelab.cs.unc.edu/" target="_blank" rel="noreferrer"><strong>MURGe-Lab</strong></a> at UNC Chapel Hill.</p>
+              <p class="row-body">Started my Ph.D. journey in the <a href="https://murgelab.cs.unc.edu/" target="_blank" rel="noreferrer">MURGe-Lab</a> at UNC Chapel Hill.</p>
             </div>
             <div class="row">
               <span class="row-label">Jan. 2026</span>
@@ -576,5 +599,45 @@
       Last updated Jul. 2026
     </footer>
   </main>
+  <script>
+    (() => {
+      const newsList = document.querySelector(".news-rows");
+      if (!newsList) return;
+
+      const visibleItems = Number.parseInt(newsList.dataset.visibleItems, 10) || 5;
+
+      const updateNewsHeight = () => {
+        const newsItems = Array.from(newsList.children);
+        newsList.style.maxHeight = "";
+
+        if (newsItems.length <= visibleItems) {
+          newsList.removeAttribute("aria-label");
+          newsList.removeAttribute("role");
+          newsList.removeAttribute("tabindex");
+          return;
+        }
+
+        const rowGap = Number.parseFloat(getComputedStyle(newsList).rowGap) || 0;
+        const visibleHeight = newsItems
+          .slice(0, visibleItems)
+          .reduce((height, item) => height + item.getBoundingClientRect().height, 0)
+          + rowGap * (visibleItems - 1);
+
+        newsList.style.maxHeight = `${Math.ceil(visibleHeight)}px`;
+        newsList.setAttribute("aria-label", "Recent news. Scroll to view older items.");
+        newsList.setAttribute("role", "region");
+        newsList.setAttribute("tabindex", "0");
+      };
+
+      let resizeFrame;
+      window.addEventListener("resize", () => {
+        window.cancelAnimationFrame(resizeFrame);
+        resizeFrame = window.requestAnimationFrame(updateNewsHeight);
+      });
+
+      updateNewsHeight();
+      document.fonts?.ready.then(updateNewsHeight);
+    })();
+  </script>
 </body>
 </html>
