@@ -293,6 +293,66 @@
       color: var(--muted);
     }
 
+    .resume-list {
+      display: grid;
+      gap: 17px;
+    }
+
+    .resume-item {
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .resume-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.62em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #9ca3af;
+    }
+
+    .resume-heading {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+    }
+
+    .resume-org {
+      flex: 1 1 20rem;
+      margin: 0;
+      color: var(--text);
+      font-size: 1.06rem;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .resume-date {
+      flex-shrink: 0;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .resume-role {
+      margin: 3px 0 0;
+      color: #374151;
+      font-size: 0.97rem;
+      font-weight: 600;
+    }
+
+    .resume-meta {
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
     .card {
       padding: 18px;
       border: 1px solid var(--line);
@@ -538,48 +598,61 @@
 
         <section class="section" id="experience">
           <h2>Experience</h2>
-          <div class="rows">
-            <div class="row">
-              <span class="row-label">Oct. 2024 – May. 2026</span>
-              <div>
-                <div class="row-title">Research Collaboration — AIM Intelligence</div>
-                <p class="row-sub">Seoul, South Korea</p>
+          <div class="resume-list">
+            <article class="resume-item">
+              <div class="resume-heading">
+                <h3 class="resume-org">AIM Intelligence</h3>
+                <span class="resume-date">Oct. 2024 – May. 2026</span>
               </div>
-            </div>
-            <div class="row">
-              <span class="row-label">Mar. 2024 – Feb. 2026</span>
-              <div>
-                <div class="row-title">Student Researcher — Center for Artificial Intelligence, Korea Institute of Science and Technology (KIST)</div>
-                <p class="row-sub">Seoul, South Korea</p>
+              <p class="resume-role">Research Collaboration</p>
+              <p class="resume-meta">Seoul, South Korea</p>
+            </article>
+            <article class="resume-item">
+              <div class="resume-heading">
+                <h3 class="resume-org">Korea Institute of Science and Technology (KIST)</h3>
+                <span class="resume-date">Mar. 2024 – Feb. 2026</span>
               </div>
-            </div>
-            <div class="row">
-              <span class="row-label">Dec. 2022 – Jun. 2023</span>
-              <div>
-                <div class="row-title">Research Intern — Center for Artificial Intelligence, Korea Institute of Science and Technology (KIST)</div>
-                <p class="row-sub">Seoul, South Korea</p>
+              <p class="resume-role">Student Researcher</p>
+              <p class="resume-meta">Center for Artificial Intelligence · Seoul, South Korea</p>
+            </article>
+            <article class="resume-item">
+              <div class="resume-heading">
+                <h3 class="resume-org">Korea Institute of Science and Technology (KIST)</h3>
+                <span class="resume-date">Dec. 2022 – Jun. 2023</span>
               </div>
-            </div>
+              <p class="resume-role">Research Intern</p>
+              <p class="resume-meta">Center for Artificial Intelligence · Seoul, South Korea</p>
+            </article>
           </div>
         </section>
 
         <section class="info-row">
           <div class="plain-block" id="education">
             <h2>Education</h2>
-            <div class="rows">
-              <div class="row">
-                <span class="row-label">Mar. 2024 – Feb. 2026</span>
-                <div>
-                  <div class="row-title">M.S. in Electrical and Electronic Engineering, Yonsei University</div>
-                  <p class="row-sub">Advisor: Prof. <a href="https://scholar.google.com/citations?user=E6emHhkAAAAJ&hl=ko" target="_blank" rel="noreferrer">Suhyun Kim</a> and Prof. <a href="https://cvlab.yonsei.ac.kr/" target="_blank" rel="noreferrer">Bumsub Ham</a></p>
+            <div class="resume-list">
+              <article class="resume-item">
+                <div class="resume-heading">
+                  <h3 class="resume-org">University of North Carolina at Chapel Hill</h3>
+                  <span class="resume-date">Aug. 2026 – Present</span>
                 </div>
-              </div>
-              <div class="row">
-                <span class="row-label">Mar. 2018 – Feb. 2024</span>
-                <div>
-                  <div class="row-title">B.S. in Software Convergence, Kyung Hee University</div>
+                <p class="resume-role">Ph.D. in Computer Science</p>
+                <p class="resume-meta">Advisor: Prof. <a href="https://www.cs.unc.edu/~mbansal/" target="_blank" rel="noreferrer">Mohit Bansal</a> · Chapel Hill, NC, USA</p>
+              </article>
+              <article class="resume-item">
+                <div class="resume-heading">
+                  <h3 class="resume-org">Yonsei University</h3>
+                  <span class="resume-date">Mar. 2024 – Feb. 2026</span>
                 </div>
-              </div>
+                <p class="resume-role">M.S. in Electrical and Electronic Engineering</p>
+                <p class="resume-meta">Advisors: Prof. <a href="https://scholar.google.com/citations?user=E6emHhkAAAAJ&hl=ko" target="_blank" rel="noreferrer">Suhyun Kim</a> and Prof. <a href="https://cvlab.yonsei.ac.kr/" target="_blank" rel="noreferrer">Bumsub Ham</a></p>
+              </article>
+              <article class="resume-item">
+                <div class="resume-heading">
+                  <h3 class="resume-org">Kyung Hee University</h3>
+                  <span class="resume-date">Mar. 2018 – Feb. 2024</span>
+                </div>
+                <p class="resume-role">B.S. in Software Convergence</p>
+              </article>
             </div>
           </div>
 
