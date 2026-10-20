@@ -761,7 +761,7 @@
             <div class="rows">
               <div class="row">
                 <span class="row-label">Reviewer</span>
-                <p class="row-body">NeurIPS 2026, CVEU Workshop @ CVPR 2026</p>
+                <p class="row-body">ICLR 2027, NeurIPS 2026, CVEU Workshop @ CVPR 2026</p>
               </div>
             </div>
           </div>
@@ -770,10 +770,18 @@
     </div>
 
     <footer>
-      Last updated Sep. 2026
+      Last updated <span id="last-updated">Oct. 2026</span>
     </footer>
   </main>
   <script>
+    (() => {
+      const el = document.getElementById("last-updated");
+      const modified = new Date(document.lastModified);
+      if (!el || Number.isNaN(modified.getTime())) return;
+      const months = ["Jan.", "Feb.", "Mar.", "Apr.", "May.", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."];
+      el.textContent = `${months[modified.getMonth()]} ${modified.getFullYear()}`;
+    })();
+
     (() => {
       const newsList = document.querySelector(".news-rows");
       if (!newsList) return;
